@@ -1,9 +1,11 @@
 {
   "name": "project4-api",
+  "version": "0.0.1",
   "authors": [
-    "Fiona <fionacheung224@gmail.com>"
+    "Fiona <fionacheung224@gmail.com>",
+    "Titi <ti.wahyuni@gmail.com>"
   ],
-  "description": "",
+  "description": "real estate mobile app",
   "main": "",
   "license": "MIT",
   "homepage": "",
@@ -15,6 +17,8 @@
     "tests"
   ],
   "dependencies": {
-    "ng-token-auth": "^0.0.29"
+    "angular": "^1.5.8",
+    "ng-token-auth": "^0.0.29",
+    "ng-file-upload": "^12.0.4"
   }
 }

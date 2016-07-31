@@ -18,20 +18,30 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.2'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# paperclip file upload
+gem 'paperclip', '~> 4.3'
+gem 'aws-sdk-v1'
+gem 'dotenv-rails'
 
+# Devise Auth
 gem 'devise_token_auth'
 gem 'omniauth'
+
+# datetimepicker
+gem 'momentjs-rails', '>= 2.9.0'
+
+# bower
 gem 'bower'
-gem 'pry-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # Replaces the standard Rails error page
+  gem 'better_errors'
+  # Grab bindings from higher up the call stack and evaluate code
+  gem 'binding_of_caller'
+  gem 'pry-rails'
 end
 
 group :development do

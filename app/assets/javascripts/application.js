@@ -15,4 +15,6 @@
 //= require angular/angular
 //= require angular-cookie/angular-cookie
 //= require ng-token-auth/dist/ng-token-auth
+//= require ng-file-upload/ng-file-upload.min
+//= require ng-file-upload/ng-file-upload-shim.min
 //= require_tree .
