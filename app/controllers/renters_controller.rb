@@ -1,5 +1,6 @@
 class RentersController < ApplicationController
-  before_action :authenticate_renter!, only: [:secret]
+  before_action :authenticate_user!, only: [:secret]
+
   def signup
   end
 
@@ -7,6 +8,6 @@ class RentersController < ApplicationController
   end
 
   def secret
-    render json: @current_renter
+    render json: current_user
   end
 end

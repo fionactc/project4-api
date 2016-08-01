@@ -2,9 +2,10 @@ class ApplicationController < ActionController::Base
   include DeviseTokenAuth::Concerns::SetUserByToken
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :null_session
-    before_action :get_current_renter
-    before_action :get_current_agent
+  # protect_from_forgery with: :null_session
+  before_action :get_current_renter
+  before_action :get_current_agent
+  before_action :get_current_user
 
   def authenticate_renter!
     render json: {message: "Unauthorize"} if current_renter.nil?
@@ -44,5 +45,20 @@ class ApplicationController < ActionController::Base
       @current_agent = current_agent
     end
     @current_agent
+  end
+
+  def authenticate_user!
+    render json: {message: "Unauthorize"} if current_user.nil?
+  end
+
+  def get_current_user
+    if current_agent.nil? && current_renter.nil?
+      return nil
+    end
+    @current_user = current_agent.nil? ? current_renter : current_agent
+  end
+
+  def current_user
+    @current_user
   end
 end

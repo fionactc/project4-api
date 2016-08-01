@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get '/renters/login', to: 'renters#login'
   get '/renters/secret', to: 'renters#secret'
 
+  namespace :api do
+    resources :chats, only: [:new, :create, :show, :index]
+  end
+
   # get '/secret', to: 'statics#secret'
   # get '/agents', to: 'statics#agents'
   # get '/renters', to: 'statics#renters'
