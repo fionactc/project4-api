@@ -17,12 +17,12 @@ class Agent < ActiveRecord::Base
     thumb: "100x100>"
   }
 
-  has_attached_file :license_num, styles: {
+  has_attached_file :license_file, styles: {
     medium: "300x300>",
     thumb: "100x100>"
   }
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
-  validates_attachment_content_type :license_num, content_type: { content_type: ["image/jpeg", "application/pdf", "image/png"] }
+  validates_attachment_content_type :license_file, content_type: { content_type: ["image/jpeg", "application/pdf", "image/png"] }
 
 end
