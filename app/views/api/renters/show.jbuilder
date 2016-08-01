@@ -1,0 +1,1 @@
+json.partial! 'renter_template', renter: @renter

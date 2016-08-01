@@ -1,0 +1,1 @@
+json.partial! 'agent_template', agent: @agent

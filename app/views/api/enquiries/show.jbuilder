@@ -1,0 +1,1 @@
+json.partial! 'enquiry_template', enquiry: @enquiry

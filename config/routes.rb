@@ -16,9 +16,13 @@ Rails.application.routes.draw do
   namespace :api do
     resources :chats, only: [:new, :create, :show, :index]
     resources :agents
+    resources :renters
+
     resources :agent_ratings
     resources :renter_ratings
+
     resources :apartments
+    resources :enquiries
     resources :property_listings
   end
 
