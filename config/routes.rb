@@ -15,6 +15,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :chats, only: [:new, :create, :show, :index]
+    resources :agents
+    resources :agent_ratings
+    resources :renter_ratings
+    resources :apartments
+    resources :property_listings
   end
 
   # get '/secret', to: 'statics#secret'
