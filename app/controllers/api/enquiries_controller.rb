@@ -9,9 +9,18 @@ class Api::EnquiriesController < ApplicationController
   def show
   end
 
+  # save enquiry, match agents with enquiry and create new enquiry_agent
   def create
     @enquiry = current_renter.enquiries.new(enquiry_params)
     if @enquiry.save
+
+      region = @enquiry.region
+      matched_agents = Agent.where("'#{region} = ANY (regions) ")
+
+      # push enquiry with agent id and current enquiry id
+      matched_agents.each do |agent|
+        EnquiryAgent.create(agent_id: agent.id, enquiry_id: @enquiry.id)
+      end
       render 'show'
     else
       render json: @enquiry.errors.messages, status: 400

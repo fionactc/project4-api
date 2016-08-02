@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   as :agent do
     # Define routes for Agent within this block.
   end
+  get '/home', to: 'statics#home'
   get '/agents/signup', to: 'agents#signup'
   get '/agents/login', to: 'agents#login'
   get '/agents/secret', to: 'agents#secret'
