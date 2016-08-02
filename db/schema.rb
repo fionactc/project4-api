@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801052221) do
+ActiveRecord::Schema.define(version: 20160802013002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,8 +166,11 @@ ActiveRecord::Schema.define(version: 20160801052221) do
     t.integer  "chat_id"
     t.integer  "agent_id"
     t.integer  "renter_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.index ["imageable_type", "imageable_id"], name: "index_messages_on_imageable_type_and_imageable_id", using: :btree
   end
 
   create_table "property_listings", force: :cascade do |t|

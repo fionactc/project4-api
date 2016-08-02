@@ -1,5 +1,6 @@
 class Message < ApplicationRecord
   belongs_to  :chat
+  belongs_to :imageable, polymorphic: true
   # belongs_to  :agent
   # belongs_to  :renter
 

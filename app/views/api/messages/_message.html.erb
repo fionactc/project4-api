@@ -1,24 +1,14 @@
 <div class="card">
   <div class="card-block">
     <div class="row">
-      <!-- if message belongs to agent -->
-      <% if message.agent_id %>
+
         <div class="col-md-11">
           <p class="card-text">
-            <span class="text-muted"> at <%= message.timestamp %> says</span><br>
+            <span class="text-muted"> <%= message.imageable.email %> at <%= message.timestamp %> says</span><br>
             <%= message.body %>
           </p>
         </div>
-      <% end %>
-      <!-- if message belongs to renter -->
-      <% if message.renter_id %>
-        <div class="col-md-11">
-          <p class="card-text">
-            <span class="text-muted"> at <%= message.timestamp %> says</span><br>
-            <%= message.body %>
-          </p>
-        </div>
-      <% end %>
+
 
     </div>
   </div>
