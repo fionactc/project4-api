@@ -1,11 +1,11 @@
 class AgentsController < ApplicationController
-  before_action :authenticate_agent!, only: [:secret]
+  before_action :authenticate_user!, only: [:secret]
   def signup
   end
   def login
   end
 
   def secret
-    render json: @current_agent
+    render json: current_user
   end
 end

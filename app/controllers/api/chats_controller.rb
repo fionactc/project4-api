@@ -10,12 +10,18 @@ class Api::ChatsController < ApplicationController
   end
 
   def create
-    @chat = current_user.chats.build(chat_params)
+    puts '-----------------'
+    puts current_user.class
+    puts '-----------------'
+    @chat = current_user.chats.create(chat_params)
+    puts @chat.title
     if @chat.save
       flash[:success] = 'Chat room added!'
       redirect_to api_chats_path
     else
-      render 'new'
+      render json: {errors: @chat.errors.messages}
+      # puts 'errorrrrrrrrrrr'
+      # render 'new'
     end
   end
 

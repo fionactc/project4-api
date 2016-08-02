@@ -8,6 +8,8 @@ class RentersController < ApplicationController
   end
 
   def secret
+    # user = env['warden'].user(:renter)
+    # render json: user
     render json: current_user
   end
 end

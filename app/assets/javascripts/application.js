@@ -15,4 +15,5 @@
 //= require angular/angular
 //= require angular-cookie/angular-cookie
 //= require ng-token-auth/dist/ng-token-auth
+//= require cable
 //= require_tree .

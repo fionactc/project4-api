@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'Renter', at: 'renter'
-
   mount_devise_token_auth_for 'Agent', at: 'agent'
+  mount ActionCable.server => '/cable'
+
   as :agent do
     # Define routes for Agent within this block.
   end
