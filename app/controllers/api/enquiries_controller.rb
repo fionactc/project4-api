@@ -11,14 +11,16 @@ class Api::EnquiriesController < ApplicationController
 
   # save enquiry, match agents with enquiry and create new enquiry_agent
   def create
+
     @enquiry = current_renter.enquiries.new(enquiry_params)
+    @enquiry.update_attributes(areas: params[:areas])
     if @enquiry.save
       areas = @enquiry.areas
       areas.each do |area|
-        matched_agents = Agent.where("'#{area} = ANY (areas) ")
+        matched_agents = Agent.where("'#{area}' = ANY (areas) ")
         matched_agents.each do |agent|
           # push enquiry with agent id and current enquiry id
-          EnquiryAgent.create(agent_id: agent.id, enquiry_id: @enquiry.id)e
+          EnquiryAgent.create(agent_id: agent.id, enquiry_id: @enquiry.id)
         end
       end
       render 'show'
@@ -51,6 +53,6 @@ private
 
   # refer to schema
   def enquiry_params
-    params.permit(:region, :areas, :bedroom_num, :bathroom_num, :property_size_min, :property_size_max, :price_min, :price_max, :building_type, :timeslot_1_date, :timeslot_1_time, :timeslot_2_date, :timeslot_2_time, :archived, :renter_id)
+    params.permit(:areas, :bedroom_num, :bathroom_num, :property_size_min, :property_size_max, :price_min, :price_max, :building_type, :timeslot_1_date, :timeslot_1_time, :timeslot_2_date, :timeslot_2_time, :archived, :renter_id)
   end
 end

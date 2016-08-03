@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20160803071245) do
+ActiveRecord::Schema.define(version: 20160803072641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,9 +143,9 @@ ActiveRecord::Schema.define(version: 20160803071245) do
     t.integer  "price_max"
     t.string   "building_type"
     t.string   "timeslot_1_date"
-    t.time     "timeslot_1_time"
+    t.string   "timeslot_1_time"
     t.string   "timeslot_2_date"
-    t.time     "timeslot_2_time"
+    t.string   "timeslot_2_time"
     t.boolean  "archived"
     t.integer  "renter_id"
     t.datetime "created_at",        null: false
