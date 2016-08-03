@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :chats, only: [:new, :create, :show, :index]
+    get '/chats/findChat/:id', to: 'chats#findChat'
     resources :agents
     resources :renters
 
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
 
     resources :apartments
     resources :enquiries
+    resources :enquiry_agents, only: [:index, :show]
     resources :property_listings
   end
 

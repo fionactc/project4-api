@@ -30,6 +30,12 @@ class Api::ChatsController < ApplicationController
     @message = Message.new
   end
 
+  # receive a renter id, return/create a chatroom between renter and current_agent
+  def findChat
+    @chat = Chat.where(renter_id: params[:id], agent_id: current_agent.id).first_or_create()
+    @chatroom = Chat.includes(:messages).find_by(id: @chat.id)
+  end
+
   private
 
   def chat_params

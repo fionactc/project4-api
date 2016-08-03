@@ -8,6 +8,6 @@ class Api::EnquiryAgentsController < ApplicationController
     matched_enquiries_agents.each do |match|
       @matched_renters.push(match.enquiry.renter)
     end
-    @matched_renters
+    render json: @matched_renters
   end
 end

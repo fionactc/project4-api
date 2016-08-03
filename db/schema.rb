@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803020416) do
+
+ActiveRecord::Schema.define(version: 20160803071245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,12 +72,12 @@ ActiveRecord::Schema.define(version: 20160803020416) do
     t.string   "company_logo_content_type"
     t.integer  "company_logo_file_size"
     t.datetime "company_logo_updated_at"
-    t.string   "regions",                                                  array: true
+    t.string   "areas",                                                    array: true
+    t.index ["areas"], name: "index_agents_on_areas", using: :btree
     t.index ["company_license_num"], name: "index_agents_on_company_license_num", unique: true, using: :btree
     t.index ["email"], name: "index_agents_on_email", using: :btree
     t.index ["license_num"], name: "index_agents_on_license_num", unique: true, using: :btree
     t.index ["mobile_number"], name: "index_agents_on_mobile_number", unique: true, using: :btree
-    t.index ["regions"], name: "index_agents_on_regions", using: :btree
     t.index ["reset_password_token"], name: "index_agents_on_reset_password_token", unique: true, using: :btree
     t.index ["uid", "provider"], name: "index_agents_on_uid_and_provider", unique: true, using: :btree
   end
@@ -135,7 +136,6 @@ ActiveRecord::Schema.define(version: 20160803020416) do
 
   create_table "enquiries", force: :cascade do |t|
     t.string   "region"
-    t.string   "area"
     t.string   "bedroom_num"
     t.string   "bathroom_num"
     t.integer  "property_size_min"
@@ -151,6 +151,8 @@ ActiveRecord::Schema.define(version: 20160803020416) do
     t.integer  "renter_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "areas",                          array: true
+    t.index ["areas"], name: "index_enquiries_on_areas", using: :btree
   end
 
   create_table "enquiry_agents", force: :cascade do |t|
