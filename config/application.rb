@@ -21,5 +21,13 @@ module Project4Api
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+  config.middleware.insert_before 0, "Rack::Cors" do
+    allow do
+      origins '*' # Control the domains
+      resource '*', :headers => :any, :methods => [:get, :post, :options, :put, :patch, :delete] # Control the resources
+    end
+  end
+
   end
 end

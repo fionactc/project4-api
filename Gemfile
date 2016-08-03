@@ -31,6 +31,9 @@ gem 'omniauth'
 # datetimepicker
 gem 'momentjs-rails', '>= 2.9.0'
 
+# rack cors
+gem 'rack-cors', :require => 'rack/cors'
+
 # bower
 gem 'bower'
 
