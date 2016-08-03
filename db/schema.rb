@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802064725) do
+ActiveRecord::Schema.define(version: 20160803020416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(version: 20160802064725) do
     t.integer  "property_size_net_min"
     t.integer  "property_size_net_max"
     t.integer  "price"
-    t.integer  "bedroom_num"
-    t.integer  "bathroom_num"
+    t.string   "bedroom_num"
+    t.string   "bathroom_num"
     t.boolean  "pet_friendly"
     t.string   "facilities"
     t.string   "building_type"
@@ -136,8 +136,8 @@ ActiveRecord::Schema.define(version: 20160802064725) do
   create_table "enquiries", force: :cascade do |t|
     t.string   "region"
     t.string   "area"
-    t.integer  "bedroom_num"
-    t.integer  "bathroom_num"
+    t.string   "bedroom_num"
+    t.string   "bathroom_num"
     t.integer  "property_size_min"
     t.integer  "property_size_max"
     t.integer  "price_min"
