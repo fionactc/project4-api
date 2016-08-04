@@ -3,7 +3,7 @@ class Api::AgentRatingsController < ApplicationController
   before_action :set_agent_ratings, only:  [:show, :update]
 
   def index
-    @agent_ratings = Agent_rating.all
+    @agent_ratings = AgentRating.all
   end
 
   def show
@@ -30,7 +30,7 @@ class Api::AgentRatingsController < ApplicationController
 private
 
   def set_agent_rating
-    @agent_rating = Agent_rating.find_by_id(params[:id])
+    @agent_rating = AgentRating.find_by_id(params[:id])
     if @agent_rating.nil?
       render json: {message: "Cannot find agent_rating with ID #{params[:id]}"}
     end

@@ -1,0 +1,1 @@
+json.partial! 'apartment_picture_template', apartment_picture: @apartment_picture

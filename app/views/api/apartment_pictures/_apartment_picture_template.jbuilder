@@ -1,0 +1,1 @@
+json.merge! apartment_picture.attributes

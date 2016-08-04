@@ -3,7 +3,7 @@ class Api::RenterRatingsController < ApplicationController
   before_action :set_renter_ratings, only:  [:show, :update]
 
   def index
-    @renter_ratings = Renter_rating.all
+    @renter_ratings = RenterRating.all
   end
 
   def show
@@ -30,7 +30,7 @@ class Api::RenterRatingsController < ApplicationController
 private
 
   def set_renter_rating
-    @renter_rating = Renter_rating.find_by_id(params[:id])
+    @renter_rating = RenterRating.find_by_id(params[:id])
     if @renter_rating.nil?
       render json: {message: "Cannot find renter_rating with ID #{params[:id]}"}
     end

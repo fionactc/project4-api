@@ -26,13 +26,14 @@ Agent.controller('NewAptCtrl', ['$scope', '$http', 'Upload', function($scope, $h
 
     // ngFileUpload's method to upload a file
     Upload.upload({
-      url: url + 'apartments',
+      url: url + 'apartments_pictures',
       method: 'POST',
       fields: data,
       file: $scope.image.file,
-      fileFormDataName: 'apartment[image]'
+      fileFormDataName: 'picture'
     }).success(function(resp) {
         console.log(resp);
     });
+
   };
 }]);

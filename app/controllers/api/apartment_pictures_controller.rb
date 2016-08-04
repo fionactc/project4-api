@@ -2,14 +2,14 @@ class Api::ApartmentPicturesController < ApplicationController
   before_action :set_apartment_picture, only: [:show, :update, :destroy]
 
   def index
-    @apartment_pictures = Apartment_picture.includes(apartment: :agent).all
+    @apartment_pictures = ApartmentPicture.includes(apartment: :agent).all
   end
 
   def show
   end
 
   def create
-    @apartment_picture = Apartment_picture.new(apartment_picture_params)
+    @apartment_picture = ApartmentPicture.new(apartment_picture_params)
     if @apartment_picture.save
       render 'show'
     else
@@ -36,7 +36,7 @@ class Api::ApartmentPicturesController < ApplicationController
 private
 
   def set_apartment_picture
-    @apartment_picture = Apartment_picture.includes(apartment: :agent).find_by_id(params[:id])
+    @apartment_picture = ApartmentPicture.includes(apartment: :agent).find_by_id(params[:id])
     if @apartment_picture.nil?
       render json: {message: "Cannot find arwork with ID #{params[:id]}"}
     end

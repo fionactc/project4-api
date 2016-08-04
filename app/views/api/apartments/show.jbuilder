@@ -1,0 +1,1 @@
+json.partial! 'apartment_template', apartment: @apartment

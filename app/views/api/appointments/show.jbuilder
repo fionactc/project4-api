@@ -1,0 +1,1 @@
+json.partial! 'appointment_template', appointment: @appointment
