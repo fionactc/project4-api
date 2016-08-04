@@ -1,32 +1,19 @@
-Agent.controller('NewAptCtrl', ['$scope', '$http', 'Upload', function($scope, $http, Upload, $state){
+Agent.controller('NewAppoCtrl', ['$scope', '$http', 'Upload', function($scope, $http, Upload, $state){
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000/api/";
 
-  $scope.apartment = {};
-  $scope.apartment_picture = {};
+  $scope.appointment = {};
   $scope.form = {};
-
 
   $scope.form.create = function(){
     $http({
-      url: url + '/apartments',
+      url: url + 'appointments',
       method: 'POST',
-      data: $scope.apartment
+      data: $scope.appointment
     }).then(function(resp){
-      $scope.apartment = ''
+      $scope.appointment = ''
     }, function(resp) {
       console.log(resp);
     })
-
-    // ngFileUpload's method to upload a file
-    Upload.upload({
-      url: url + 'apartment_pictures',
-      method: 'POST',
-      file: $scope.apartment_picture.picture,
-      fileFormDataName: 'picture'
-    }).success(function(resp) {
-        console.log(resp);
-    });
-
   };
 }]);

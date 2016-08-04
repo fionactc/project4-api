@@ -29,11 +29,12 @@ Rails.application.routes.draw do
     resources :enquiries
     resources :enquiry_agents, only: [:index, :show]
     resources :property_listings
+    resources :appointments
   end
 
   # get '/secret', to: 'statics#secret'
   # get '/agents', to: 'statics#agents'
   # get '/renters', to: 'statics#renters'
-  get '/apartments', to: 'statics#createApt'
+  get '/appointments', to: 'statics#createApt'
 
 end

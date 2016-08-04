@@ -11,7 +11,8 @@ class Api::AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = current_agent.appointments.new(appointment_params)
+    @appointment = Appointment.new(appointment_params)
+    # @appointment = current_agent.appointments.new(appointment_params)
     if @appointment.save
       render 'show'
     else
