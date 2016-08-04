@@ -1,5 +1,5 @@
 var Renter = angular.module('RenterApp', ['ng-token-auth']);
-var Agent  = angular.module('AgentApp', ['ng-token-auth']);
+var Agent  = angular.module('AgentApp', ['ng-token-auth','ngFileUpload']);
 
 Renter.config(function($authProvider) {
   $authProvider.configure({

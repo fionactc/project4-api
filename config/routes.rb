@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :renter_ratings
 
     resources :apartments
+    resources :apartment_pictures
     resources :enquiries
     resources :enquiry_agents, only: [:index, :show]
     resources :property_listings
@@ -33,4 +34,6 @@ Rails.application.routes.draw do
   # get '/secret', to: 'statics#secret'
   # get '/agents', to: 'statics#agents'
   # get '/renters', to: 'statics#renters'
+  get '/apartments', to: 'statics#createApt'
+
 end

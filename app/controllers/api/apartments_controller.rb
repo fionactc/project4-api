@@ -10,7 +10,7 @@ class Api::ApartmentsController < ApplicationController
   end
 
   def create
-    @apartment = current_agent.Apartments.new(apartment_params)
+    @apartment = current_agent.apartments.new(apartment_params)
     if @apartment.save
       render 'show'
     else

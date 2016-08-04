@@ -15,4 +15,8 @@ class StaticsController < ApplicationController
     # render json: @renter
 
   end
+
+  def createApt
+    render 'create_apt'
+  end
 end
