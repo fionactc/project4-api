@@ -3,7 +3,8 @@ class Api::ApartmentsController < ApplicationController
   before_action :set_apartment, only:  [:show, :update]
 
   def index
-    @apartments = Apartment.all
+    @apartments = current_agent.apartments
+    # render json: @apartments
   end
 
   def show

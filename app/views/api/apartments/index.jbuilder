@@ -1,3 +1,5 @@
-json.array! @apartments do |apartment|
-  json.partial! 'apartment_template', apartment: apartment
-end
+  json.array! @apartments do |apartment|
+    json.id apartment.id
+    json.area apartment.area
+    json.checked false
+  end

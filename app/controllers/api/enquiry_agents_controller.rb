@@ -3,11 +3,11 @@ class Api::EnquiryAgentsController < ApplicationController
 
   # return all matched renters for current_agent
   def index
-    @matched_renters = []
-    matched_enquiries_agents = current_agent.enquiry_agents
-    matched_enquiries_agents.each do |match|
-      @matched_renters.push(match.enquiry.renter)
-    end
-    render json: @matched_renters
+    # @matched_enquiries = []
+    @matched_enquiries_agents = current_agent.enquiry_agents.includes(:enquiry)
+    # matched_enquiries_agents.each do |match|
+    #   @matched_enquiries.push(match.enquiry)
+    # end
+    # render json: @matched_enquiries_agents
   end
 end

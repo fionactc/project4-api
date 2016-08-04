@@ -7,7 +7,8 @@ class MessageBroadcastJob < ApplicationJob
     puts message
     puts '----------------------'
     # saved message is passed here
-    ActionCable.server.broadcast "chat_rooms_#{message.chat.id}_channel", message: render_message(message)
+    # ActionCable.server.broadcast "chat_rooms_#{message.chat.id}_channel", message: render_message(message)
+    ActionCable.server.broadcast "chat_rooms_#{message.chat.id}_channel", message: message
   end
 
   private
