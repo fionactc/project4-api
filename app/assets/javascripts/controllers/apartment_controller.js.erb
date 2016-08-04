@@ -2,38 +2,49 @@ Agent.controller('NewAptCtrl', ['$scope', '$http', 'Upload', function($scope, $h
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000/api/";
 
-  $scope.post = {};
+  $scope.apartment = {};
   $scope.image = {};
   $scope.form = {};
 
-  $scope.form.create = function(){
-    var data = {
-      'apt_name': $scope.apartment.apt_name,
-      'street': $scope.apartment.street,
-      'area': $scope.apartment.area,
-      'property_size_gross_min': $scope.apartment.property_size_gross_min,
-      'property_size_gross_max': $scope.apartment.property_size_gross_max,
-      'property_size_net_min': $scope.apartment.property_size_net_min,
-      'property_size_net_max': $scope.apartment.property_size_net_max,
-      'price': $scope.apartment.price,
-      'bedroom_num': $scope.apartment.bedroom_num,
-      'bathroom_num': $scope.apartment.bathroom_num,
-      'pet_friendly': $scope.apartment.pet_friendly,
-      'facilities': $scope.apartment.facilities,
-      'building_type': $scope.apartment.building_type,
-      'description': $scope.apartment.description
-    };
 
-    // ngFileUpload's method to upload a file
-    Upload.upload({
-      url: url + 'apartments_pictures',
+  $scope.form.create = function(){
+    $http({
+      url: 'http://localhost:3000/api/apartments',
       method: 'POST',
-      fields: data,
-      file: $scope.image.file,
-      fileFormDataName: 'picture'
-    }).success(function(resp) {
-        console.log(resp);
-    });
+      data: $scope.apartment
+    }).then(function(resp){
+      $scope.apartment = ''
+    }, function(resp) {
+      console.log(resp);
+    })
+
+    // var data = {
+    //   'apt_name': $scope.apartment.apt_name,
+    //   'street': $scope.apartment.street,
+    //   'area': $scope.apartment.area,
+    //   'property_size_gross_min': $scope.apartment.property_size_gross_min,
+    //   'property_size_gross_max': $scope.apartment.property_size_gross_max,
+    //   'property_size_net_min': $scope.apartment.property_size_net_min,
+    //   'property_size_net_max': $scope.apartment.property_size_net_max,
+    //   'price': $scope.apartment.price,
+    //   'bedroom_num': $scope.apartment.bedroom_num,
+    //   'bathroom_num': $scope.apartment.bathroom_num,
+    //   'pet_friendly': $scope.apartment.pet_friendly,
+    //   'facilities': $scope.apartment.facilities,
+    //   'building_type': $scope.apartment.building_type,
+    //   'description': $scope.apartment.description
+    // };
+
+    // // ngFileUpload's method to upload a file
+    // Upload.upload({
+    //   url: url + 'apartments_pictures',
+    //   method: 'POST',
+    //   fields: data,
+    //   file: $scope.image.file,
+    //   fileFormDataName: 'picture'
+    // }).success(function(resp) {
+    //     console.log(resp);
+    // });
 
   };
 }]);
