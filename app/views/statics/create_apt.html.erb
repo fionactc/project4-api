@@ -34,10 +34,10 @@
       </div>
 
       <!-- File upload button -->
-      <div class="button" ngf-select ng-model="image.file">Select File</div>
+      <div class="button" ngf-select ng-model="apartment_picture.picture" ngf-multiple="true">Select File</div>
 
        <!-- Image / file preview -->
-      <img ngf-src="image.file" width="200" height="200">
+      <img ngf-src="apartment_picture.picture" width="200" height="200">
 
       <button type="submit" class="btn btn-default">Submit</button>
     </form>

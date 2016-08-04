@@ -42,7 +42,7 @@ private
 
   # refer to schema
   def apartment_params
-    params.permit(:apt_name, :street, :area, :property_size_gross, :property_size_net, :price, :bedroom_num, :bathroom_num, :pet_friendly, :facilities, :building_type, :description, :agent_id)
+    params.require(:apartment).permit(:apt_name, :street, :area, :property_size_gross, :property_size_net, :price, :bedroom_num, :bathroom_num, :pet_friendly, :facilities, :building_type, :description, :agent_id)
   end
 
 end
