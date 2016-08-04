@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803072641) do
+ActiveRecord::Schema.define(version: 20160804042823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,20 +95,17 @@ ActiveRecord::Schema.define(version: 20160803072641) do
     t.string   "apt_name"
     t.string   "street"
     t.string   "area"
-    t.integer  "property_size_gross_min"
-    t.integer  "property_size_gross_max"
-    t.integer  "property_size_net_min"
-    t.integer  "property_size_net_max"
     t.integer  "price"
     t.string   "bedroom_num"
     t.string   "bathroom_num"
     t.boolean  "pet_friendly"
-    t.string   "facilities"
     t.string   "building_type"
     t.string   "description"
     t.integer  "agent_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "property_size_net"
+    t.integer  "property_size_gross"
   end
 
   create_table "appointments", force: :cascade do |t|
@@ -142,15 +139,15 @@ ActiveRecord::Schema.define(version: 20160803072641) do
     t.integer  "price_min"
     t.integer  "price_max"
     t.string   "building_type"
-    t.string   "timeslot_1_date"
-    t.string   "timeslot_1_time"
-    t.string   "timeslot_2_date"
-    t.string   "timeslot_2_time"
     t.boolean  "archived"
     t.integer  "renter_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "areas",                          array: true
+    t.boolean  "urgent"
+    t.date     "movein_date"
+    t.string   "available_days",                 array: true
+    t.string   "timeslot"
     t.index ["areas"], name: "index_enquiries_on_areas", using: :btree
   end
 
