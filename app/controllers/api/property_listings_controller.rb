@@ -4,10 +4,14 @@ class Api::PropertyListingsController < ApplicationController
   before_action :set_property_listing, only:  [:show, :update, :destroy]
 
   def index
-    @property_listings = Property_listing.all
+    @property_listings = PropertyListing.all
   end
 
   def show
+    # pass in agent_id, if cant, pass in chat_id
+    @property_listings = PropertyListing.where(renter_id: current_renter.id, agent_id: params[:agent_id]).group_by {|x|x.enquiry}
+    render json: @property_listings
+
   end
 
   def create
@@ -16,30 +20,8 @@ class Api::PropertyListingsController < ApplicationController
       newlisting = PropertyListing.create(apartment_id: id, renter_id: params[:renter_id], agent_id: current_agent.id, enquiry_id: params[:enquiry_id])
       @propertyListings.push(newlisting);
     end
-    render json: @propertyListings
-    # puts '------------------'
-    # puts params[:chat_id]
-    # EnquiryAgent.where(agent_id: )
-    # puts params[:apartments]
-    # params[:apartments].each do |id|
-    #   PropertyListing.create()
-    # end
-    # puts '------------------'
-
-    # chat = Chat.find(params[:chat_id]);
-    # renter_id = chat.renter_id;
-    # Renter.find(renter_id)
-    # Chat.find(params[:chat_id]).renter.
-
-    # enquiry_agent = EnquiryAgent.where(chat_id: params[:chat_id], agent_id: current_agent.id);
-    # @property_listing = PropertyListing.new(agent_id: current_agent.id, enquiry_id: enquiry_agent.enquiry_id)
-
-    # @property_listing = current_renter.property_listings.new(property_listing_params)
-    # if @property_listing.save
-    #   render 'show'
-    # else
-    #   render json: @property_listing.errors.messages, status: 400
-    # end
+    @message = current_agent.messages.create(chat_id: params[:chat_id], body: 'I have sent ' + @propertyListings.count.to_s + ' new listing(s) to you.', message_type: 'listing')
+    @propertyListings
   end
 
   def update
@@ -67,9 +49,7 @@ private
   # refer to schema
   def property_listing_params
     params.permit(:apartments, :renter_id, :enquiry_id)
-    # link property_listing to enquiry, agents and renters
-    # i DONT HAVE FUCKING CURRENT_RENTER
-    # I have chat.ID = can get agent_id, renter_id => then can get enquiry_agent=> then can get enquiry
+
   end
 
 end

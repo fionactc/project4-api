@@ -26,7 +26,7 @@ class Api::ChatsController < ApplicationController
   end
 
   def show
-    @chatroom = Chat.includes(:messages).find_by(id: params[:id])
+    @chatroom = Chat.includes(:messages).find(params[:id])
     # @message = Message.new
   end
 

@@ -11,13 +11,23 @@ class Api::AppointmentsController < ApplicationController
   end
 
   def create
-    # @appointment = Appointment.new(appointment_params)
+
+    # definitely need chat_id
     @appointment = current_agent.appointments.new(appointment_params)
     if @appointment.save
-      render 'show'
+      @message = current_agent.messages.create(
+        chat_id: params[:chat_id],
+        body: 'I have created a new appointment on ' + params[:start_time] + ', '+ params[:start_date] + ', please confirm.',
+        message_type: 'appointment')
+      # render 'show'
+      render json: @appointment
     else
       render json: @appointment.errors.messages, status: 400
     end
+  end
+
+  def confirm
+
   end
 
   def update
@@ -44,7 +54,7 @@ private
 
   # refer to schema
   def appointment_params
-    params.permit(:start_date, :end_date, :start_time, :end_time, :read, :agent_rating_id, :renter_rating_id, :enquiry_agent_id)
+    params.permit(:start_date, :end_date, :start_time, :end_time, :read, :agent_rating_id, :renter_rating_id, :enquiry_agent_id, :chat_id)
   end
 
 end
