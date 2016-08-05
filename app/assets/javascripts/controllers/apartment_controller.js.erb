@@ -1,19 +1,32 @@
-Renter.controller('NewRateCtrl', ['$scope', '$http', function($scope, $http, $state){
+Agent.controller('NewRateCtrl', ['$scope', '$http', 'Upload', function($scope, $http, Upload, $state){
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000/api/";
 
-  $scope.agent_rating = {};
+  $scope.apartment = {};
+  $scope.apartment_pictures = {};
   $scope.form = {};
 
   $scope.form.create = function(){
-    $http({
-      url: url + 'agent_ratings',
-      method: 'POST',
-      data: $scope.agent_rating
+    console.log($scope.apartment_pictures)
+
+    var data = {
+        files: $scope.apartment_pictures.pictures,
+        apartment: $scope.apartment
+      }
+
+      console.log(data)
+
+    Upload.upload({
+      url: url + "apartments",
+      method: "POST",
+      data: data
     }).then(function(resp){
-      $scope.agent_rating = ''
-    }, function(resp) {
       console.log(resp);
-    })
+    }, function(resp){
+      console.log(resp);
+    }, function(evt){
+      console.log(Math.min(100, parseInt(100.0 * evt.loaded / evt.total)))
+    });
   };
+
 }]);

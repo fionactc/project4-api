@@ -35,6 +35,6 @@ Rails.application.routes.draw do
   # get '/secret', to: 'statics#secret'
   # get '/agents', to: 'statics#agents'
   # get '/renters', to: 'statics#renters'
-  get '/appointments', to: 'statics#createApt'
+  get '/apartments', to: 'statics#createApt'
 
 end

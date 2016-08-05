@@ -43,6 +43,6 @@ private
   end
 
   def apartment_picture_params
-    params.permit(:picture, :apartment_id)
+    params.permit(:picture, :apartment)
   end
 end
