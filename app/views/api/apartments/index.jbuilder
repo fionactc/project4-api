@@ -1,5 +1,4 @@
   json.array! @apartments do |apartment|
-    json.id apartment.id
-    json.area apartment.area
+    json.partial! 'apartment_template', apartment: apartment
     json.checked false
   end

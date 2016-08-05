@@ -4,7 +4,7 @@ class Api::ApartmentsController < ApplicationController
   before_action :set_apartment_pictures, only: [:create]
 
   def index
-    # @apartments = current_agent.apartments
+    @apartments = current_agent.apartments
     # render json: @apartments
   end
 
