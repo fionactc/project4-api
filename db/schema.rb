@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20160804070949) do
-
+ActiveRecord::Schema.define(version: 20160805033949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,8 +117,9 @@ ActiveRecord::Schema.define(version: 20160804070949) do
     t.integer  "agent_rating_id"
     t.integer  "renter_rating_id"
     t.integer  "enquiry_agent_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "confirmed",        default: false
   end
 
   create_table "chats", force: :cascade do |t|

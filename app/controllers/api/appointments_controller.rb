@@ -27,7 +27,18 @@ class Api::AppointmentsController < ApplicationController
   end
 
   def confirm
-
+    # send back appointment_id
+    @appointment = Appointment.find(params[:id]).update_attributes(confirmed: true)
+    if @appointment.save
+      chat = Chat.where(agent_id: @appointment.agent_id, renter_id: @appointment.renter_id)
+      @message = current_renter.messages.create(
+        chat_id: chat.id,
+        body: 'I have confirmed our appointment on ' + params[:start_time] + ', ' + params[:start_date] '.',
+        message_type: 'appointment')
+      render json: @appointment
+    else
+      render json: @appointment.errors.messages, status: 400
+    end
   end
 
   def update
