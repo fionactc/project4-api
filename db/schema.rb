@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805033949) do
-
+ActiveRecord::Schema.define(version: 20160805070401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +71,9 @@ ActiveRecord::Schema.define(version: 20160805033949) do
     t.integer  "company_logo_file_size"
     t.datetime "company_logo_updated_at"
     t.string   "areas",                                                    array: true
+    t.boolean  "avatar_processing"
+    t.boolean  "license_file_processing"
+    t.boolean  "company_logo_processing"
     t.index ["areas"], name: "index_agents_on_areas", using: :btree
     t.index ["company_license_num"], name: "index_agents_on_company_license_num", unique: true, using: :btree
     t.index ["email"], name: "index_agents_on_email", using: :btree
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 20160805033949) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.boolean  "picture_processing"
   end
 
   create_table "apartments", force: :cascade do |t|
@@ -148,8 +151,8 @@ ActiveRecord::Schema.define(version: 20160805033949) do
     t.string   "urgent"
     t.date     "movein_date"
     t.string   "available_days",                 array: true
-    t.string   "timeslot"
     t.text     "remarks"
+    t.string   "timeslot",                       array: true
     t.index ["areas"], name: "index_enquiries_on_areas", using: :btree
   end
 
@@ -234,6 +237,7 @@ ActiveRecord::Schema.define(version: 20160805033949) do
     t.boolean  "is_admin"
     t.string   "gen_vtoken"
     t.boolean  "is_verified"
+    t.boolean  "avatar_processing"
     t.index ["email"], name: "index_renters_on_email", using: :btree
     t.index ["mobile_number"], name: "index_renters_on_mobile_number", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_renters_on_reset_password_token", unique: true, using: :btree
