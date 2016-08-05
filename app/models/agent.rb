@@ -11,6 +11,8 @@ class Agent < ActiveRecord::Base
   has_many :renter_ratings
   has_many :messages, as: :imageable
   has_many :chats
+  has_one  :appointment
+
 
   has_attached_file :avatar, styles: {
     medium: "300x300>",

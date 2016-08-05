@@ -1,17 +1,17 @@
-Agent.controller('NewAppoCtrl', ['$scope', '$http', 'Upload', function($scope, $http, Upload, $state){
+Renter.controller('NewRateCtrl', ['$scope', '$http', function($scope, $http, $state){
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000/api/";
 
-  $scope.appointment = {};
+  $scope.agent_rating = {};
   $scope.form = {};
 
   $scope.form.create = function(){
     $http({
-      url: url + 'appointments',
+      url: url + 'agent_ratings',
       method: 'POST',
-      data: $scope.appointment
+      data: $scope.agent_rating
     }).then(function(resp){
-      $scope.appointment = ''
+      $scope.agent_rating = ''
     }, function(resp) {
       console.log(resp);
     })

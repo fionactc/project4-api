@@ -10,7 +10,8 @@ class Api::AgentRatingsController < ApplicationController
   end
 
   def create
-    @agent_rating = current_renter.agent_ratings.new(agent_rating_params)
+    @agent_rating = AgentRating.new(agent_rating_params)
+    # @agent_rating = current_renter.agent_ratings.new(agent_rating_params)
     if @agent_rating.save
       render 'show'
     else
