@@ -1,5 +1,5 @@
 class Api::ChatsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_agent!, only: [:findChat]
 
   def index
     @chats = Chat.all

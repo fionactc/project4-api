@@ -8,3 +8,5 @@ namespace :import_incidents_csv do
     end
   end
 end
+
+# run in iterm: rake import_incidents_csv:create_incidents

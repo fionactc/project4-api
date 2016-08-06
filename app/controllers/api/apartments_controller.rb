@@ -5,7 +5,7 @@ class Api::ApartmentsController < ApplicationController
 
   def index
     @apartments = current_agent.apartments
-    # render json: @apartments
+    render json: @apartments
   end
 
   def show
