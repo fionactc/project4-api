@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160808073139) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,9 +72,6 @@ ActiveRecord::Schema.define(version: 20160808073139) do
     t.integer  "company_logo_file_size"
     t.datetime "company_logo_updated_at"
     t.string   "areas",                                                            array: true
-    t.boolean  "avatar_processing"
-    t.boolean  "license_file_processing"
-    t.boolean  "company_logo_processing"
     t.index ["areas"], name: "index_agents_on_areas", using: :btree
     t.index ["company_license_num"], name: "index_agents_on_company_license_num", unique: true, using: :btree
     t.index ["email"], name: "index_agents_on_email", using: :btree
