@@ -14,7 +14,7 @@ class Api::ApartmentsController < ApplicationController
   def create
     @apartment = current_agent.apartments.new(apartment_params)
     if @apartment.save
-      if @pictures.exists?
+      if @pictures
         @pictures.each do |key, value|
         ApartmentPicture.create(picture: value, apartment_id: @apartment.id)
       end
