@@ -93,4 +93,13 @@ Rails.application.configure do
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+  # Add web socket server
+  config.web_socket_server_url = "wss://simplyhome-dev-rails.herokuapp.com/cable"
+
+  # allow web socket requests from origin
+  config.action_cable.allowed_request_origins = ['https://simplyhome-dev-ionic.herokuapp.com', 'http://simplyhome-dev-ionic.herokuapp.com']
+
+
+
 end
