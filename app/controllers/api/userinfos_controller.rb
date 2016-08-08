@@ -3,7 +3,8 @@ class Api::UserinfosController < ApplicationController
 
   def userinfo
     @current_user = current_user
-    puts current_user.class
+    # puts current_user.class
+    render json: @current_user
   end
 
 end

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
     resources :agent_ratings
     resources :renter_ratings
+    get '/userinfos', to: 'userinfos#userinfo'
 
     resources :apartments
     get '/apartments/enquiry/:id', to: 'apartments#enquiry'
