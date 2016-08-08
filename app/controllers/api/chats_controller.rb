@@ -13,7 +13,7 @@ class Api::ChatsController < ApplicationController
   end
 
   def userinfo
-    # @current_user = current_user
+    @current_user = current_user
     puts current_user.class
     # render json: @type
   end
