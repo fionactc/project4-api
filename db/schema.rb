@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808073139) do
+ActiveRecord::Schema.define(version: 20160808122739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,6 +176,8 @@ ActiveRecord::Schema.define(version: 20160808073139) do
     t.integer  "imageable_id"
     t.string   "imageable_type"
     t.string   "message_type"
+    t.string   "appointment_id"
+    t.string   "listing_title"
     t.index ["imageable_type", "imageable_id"], name: "index_messages_on_imageable_type_and_imageable_id", using: :btree
   end
 
@@ -188,6 +190,7 @@ ActiveRecord::Schema.define(version: 20160808073139) do
     t.string   "renter_id"
     t.string   "agent_id"
     t.string   "enquiry_id"
+    t.string   "message_id"
   end
 
   create_table "renter_ratings", force: :cascade do |t|

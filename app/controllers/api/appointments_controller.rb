@@ -4,23 +4,17 @@ class Api::AppointmentsController < ApplicationController
   before_action :set_appointment, only:  [:show, :update, :destroy]
 
   def index
-    # @appointments = Appointment.includes(:agent_rating, :renter_rating, :enquiry_agent).all
-    # Person.where(name: 'Neil').or( Person.where(age: 27) )
     if (current_agent)
       @appointments = Appointment.includes(:agent, :renter).where(agent_id: current_agent.id)
     elsif (current_renter)
       @appointments = Appointment.includes(:agent, :renter).where(agent_id: current_renter.id)
     end
-    # @appointments = Appointment.where(agent_id: current_agent.id).or(Appointment.where(renter_id: current_renter.id))
-    # render json: @appointments
   end
 
   def show
   end
 
   def create
-    # puts params[:start_time]
-    # puts appointment_params
     @appointment = Appointment.new(appointment_params)
     @appointment.update_attributes(agent_id: current_agent.id)
     if @appointment.save
@@ -30,11 +24,9 @@ class Api::AppointmentsController < ApplicationController
       @message = current_agent.messages.create(
         chat_id: params[:chat_id],
         body: 'I have created a new appointment on ' + params[:start_time] + ', '+ params[:start_date] + ', please confirm.',
-        message_type: 'appointment')
-      # render 'show'
+        message_type: 'appointment',
+        appointment_id: @appointment.id)
       render json: @appointment
-    # else
-      # render json: @appointment.errors.messages, status: 400
     end
   end
 
