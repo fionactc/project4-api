@@ -1,8 +1,8 @@
 class Renter < ActiveRecord::Base
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable,
-          :omniauthable, :authentication_keys => [mobile_number: true, email: false]
+          :recoverable, :rememberable, :trackable,
+          :omniauthable, :authentication_keys => [:mobile_number]
   include DeviseTokenAuth::Concerns::User
 
   has_many :enquiries
@@ -26,7 +26,7 @@ class Renter < ActiveRecord::Base
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
       where(conditions.to_h).where(["mobile_number = :value", { :value => login }]).first
-    elsif conditions.has_key?(:username)
+    elsif conditions.has_key?(:mobile_number)
       where(conditions.to_h).first
     end
   end

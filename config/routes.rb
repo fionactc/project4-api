@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'Renter', at: 'renter'
-  mount_devise_token_auth_for 'Agent', at: 'agent'
+  mount_devise_token_auth_for 'Renter', at: 'renter', controllers: {
+    sessions: 'overrides/sessions',
+    registrations: 'overrides/registrations'
+  }
+
+  mount_devise_token_auth_for 'Agent', at: 'agent', controllers: {
+    sessions: 'overrides/sessions',
+    registrations: 'overrides/registrations'
+  }
   mount ActionCable.server => '/cable'
 
   as :agent do
