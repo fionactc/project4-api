@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805070401) do
+ActiveRecord::Schema.define(version: 20160808015154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 20160805070401) do
   end
 
   create_table "agents", force: :cascade do |t|
-    t.string   "provider",                  default: "email", null: false
-    t.string   "uid",                       default: "",      null: false
-    t.string   "encrypted_password",        default: "",      null: false
+    t.string   "provider",                  default: "mobile_number", null: false
+    t.string   "uid",                       default: "",              null: false
+    t.string   "encrypted_password",        default: "",              null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",             default: 0,       null: false
+    t.integer  "sign_in_count",             default: 0,               null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20160805070401) do
     t.string   "company_logo_content_type"
     t.integer  "company_logo_file_size"
     t.datetime "company_logo_updated_at"
-    t.string   "areas",                                                    array: true
+    t.string   "areas",                                                            array: true
     t.boolean  "avatar_processing"
     t.boolean  "license_file_processing"
     t.boolean  "company_logo_processing"
@@ -203,13 +203,13 @@ ActiveRecord::Schema.define(version: 20160805070401) do
   end
 
   create_table "renters", force: :cascade do |t|
-    t.string   "provider",               default: "email", null: false
-    t.string   "uid",                    default: "",      null: false
-    t.string   "encrypted_password",     default: "",      null: false
+    t.string   "provider",               default: "mobile_number", null: false
+    t.string   "uid",                    default: "",              null: false
+    t.string   "encrypted_password",     default: "",              null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,       null: false
+    t.integer  "sign_in_count",          default: 0,               null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

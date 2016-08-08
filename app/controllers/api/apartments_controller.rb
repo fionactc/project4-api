@@ -14,9 +14,11 @@ class Api::ApartmentsController < ApplicationController
   def create
     @apartment = current_agent.apartments.new(apartment_params)
     if @apartment.save
-      @pictures.each do |key, value|
+      if @pictures.exists?
+        @pictures.each do |key, value|
         ApartmentPicture.create(picture: value, apartment_id: @apartment.id)
       end
+    end
       render 'show'
     else
       render json: @apartment.errors.messages, status: 400

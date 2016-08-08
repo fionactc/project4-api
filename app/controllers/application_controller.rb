@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :get_current_renter
   before_action :get_current_agent
   before_action :get_current_user
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
 
   def authenticate_renter!
     render json: {message: "Unauthorize"} if current_renter.nil?
@@ -60,5 +62,13 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user
+  end
+
+protected
+
+  def configure_permitted_parameters
+    added_attrs = [:email, :password, :password_confirmation, :mobile_number]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 end
