@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808015154) do
+
+ActiveRecord::Schema.define(version: 20160808073139) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,7 +94,6 @@ ActiveRecord::Schema.define(version: 20160808015154) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.boolean  "picture_processing"
   end
 
   create_table "apartments", force: :cascade do |t|
@@ -103,27 +104,29 @@ ActiveRecord::Schema.define(version: 20160808015154) do
     t.string   "bedroom_num"
     t.string   "bathroom_num"
     t.boolean  "pet_friendly"
-    t.string   "building_type"
     t.string   "description"
     t.integer  "agent_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "property_size_net"
     t.integer  "property_size_gross"
+    t.boolean  "walkup"
+    t.boolean  "open_kitchen"
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.date     "start_date"
-    t.date     "end_date"
-    t.time     "start_time"
-    t.time     "end_time"
-    t.boolean  "read"
+    t.string   "start_date"
+    t.string   "start_time"
+    t.string   "end_time"
     t.integer  "agent_rating_id"
     t.integer  "renter_rating_id"
     t.integer  "enquiry_agent_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.boolean  "confirmed",        default: false
+    t.string   "renter_id"
+    t.string   "agent_id"
+    t.string   "location"
   end
 
   create_table "chats", force: :cascade do |t|
@@ -143,7 +146,6 @@ ActiveRecord::Schema.define(version: 20160808015154) do
     t.integer  "property_size_max"
     t.integer  "price_min"
     t.integer  "price_max"
-    t.string   "building_type"
     t.boolean  "archived"
     t.integer  "renter_id"
     t.datetime "created_at",        null: false
@@ -154,6 +156,9 @@ ActiveRecord::Schema.define(version: 20160808015154) do
     t.string   "available_days",                 array: true
     t.text     "remarks"
     t.string   "timeslot",                       array: true
+    t.boolean  "walkup"
+    t.boolean  "open_kitchen"
+    t.boolean  "pet_friendly"
     t.index ["areas"], name: "index_enquiries_on_areas", using: :btree
   end
 
@@ -238,7 +243,6 @@ ActiveRecord::Schema.define(version: 20160808015154) do
     t.boolean  "is_admin"
     t.string   "gen_vtoken"
     t.boolean  "is_verified"
-    t.boolean  "avatar_processing"
     t.index ["email"], name: "index_renters_on_email", using: :btree
     t.index ["mobile_number"], name: "index_renters_on_mobile_number", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_renters_on_reset_password_token", unique: true, using: :btree

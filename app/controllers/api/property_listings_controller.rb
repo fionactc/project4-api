@@ -4,7 +4,13 @@ class Api::PropertyListingsController < ApplicationController
   before_action :set_property_listing, only:  [:show, :update, :destroy]
 
   def index
-    @property_listings = PropertyListing.all
+    # @property_listings = PropertyListing.all
+    # @property_listings = current_renter.property_listings.group_by{|x|x.agent.email}
+    @property_listings = PropertyListing.includes(:apartment).where(renter_id: current_renter.id).group_by{|x|x.agent}
+     # @property_listings = PropertyListing.includes(:apartment).where(renter_id: current_renter.id).group_by{|x|x.agent}
+    # }
+    # }
+    # render json: @property_listings
   end
 
   def show
@@ -17,7 +23,7 @@ class Api::PropertyListingsController < ApplicationController
   def create
     @propertyListings = [];
     params[:apartments].each do |id|
-      newlisting = PropertyListing.create(apartment_id: id, renter_id: params[:renter_id], agent_id: current_agent.id, enquiry_id: params[:enquiry_id])
+      newlisting = PropertyListing.create(apartment_id: id, renter_id: params[:renter_id], agent_id: current_agent.id)
       @propertyListings.push(newlisting);
     end
     @message = current_agent.messages.create(chat_id: params[:chat_id], body: 'I have sent ' + @propertyListings.count.to_s + ' new listing(s) to you.', message_type: 'listing')
@@ -48,7 +54,7 @@ private
 
   # refer to schema
   def property_listing_params
-    params.permit(:apartments, :renter_id, :enquiry_id)
+    params.permit(:apartments, :renter_id)
 
   end
 

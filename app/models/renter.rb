@@ -10,6 +10,7 @@ class Renter < ActiveRecord::Base
   has_many :renter_ratings
   has_many :messages, as: :imageable
   has_many :chats
+  has_many :property_listings
   has_one  :appointment
 
   has_attached_file :avatar, styles: {

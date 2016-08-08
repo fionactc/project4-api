@@ -2,11 +2,20 @@ class Api::ChatsController < ApplicationController
   before_action :authenticate_agent!, only: [:findChat]
 
   def index
-    @chats = Chat.all
+    # @chats = Chat.all
+    # @chats
+    @chats = current_user.chats.includes(:messages, :renter, :agent)
+    # render json: @chats
   end
 
   def new
     @chat = Chat.new
+  end
+
+  def userinfo
+    # @current_user = current_user
+    puts current_user.class
+    # render json: @type
   end
 
   def create

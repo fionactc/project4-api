@@ -27,6 +27,7 @@ Agent.config(function($authProvider) {
     passwordResetPath:       '/agent/password',
     passwordUpdatePath:      '/agent/password',
     emailSignInPath:         '/agent/sign_in',
+    // storage: 'localStorage',
     validateOnPageLoad: true
   });
 });

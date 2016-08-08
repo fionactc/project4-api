@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
   def get_current_renter
     return nil unless cookies[:auth_headers]
     auth_headers = JSON.parse cookies[:auth_headers]
+    # auth_headers = localStorage.getItem("auth_headers");
+    # return nil unless auth_headers
 
     expiration_datetime = DateTime.strptime(auth_headers["expiry"], "%s")
     current_renter = Renter.find_by(uid: auth_headers["uid"])
@@ -36,6 +38,9 @@ class ApplicationController < ActionController::Base
   def get_current_agent
     return nil unless cookies[:auth_headers]
     auth_headers = JSON.parse cookies[:auth_headers]
+    # return nil unless localStorage.getItem("auth_headers")
+    # auth_headers = localStorage.getItem("auth_headers")
+    # return nil unless auth_headers
 
     expiration_datetime = DateTime.strptime(auth_headers["expiry"], "%s")
     current_agent = Agent.find_by(uid: auth_headers["uid"])

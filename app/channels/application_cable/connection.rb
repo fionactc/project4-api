@@ -20,7 +20,7 @@ module ApplicationCable
 
     # this checks whether a user is authenticated with devise
     def find_verified_user
-      # env['warden'].user fetches the currently logged-in user
+    # env['warden'].user fetches the currently logged-in user
     #   if verified_user = env['warden'].user
     #     verified_user
     #   else

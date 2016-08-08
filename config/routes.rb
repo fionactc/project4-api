@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :chats, only: [:new, :create, :show, :index]
+    get '/userinfo', to: 'chats#userinfo'
     get '/chats/findChat/:id/:enquiryId', to: 'chats#findChat'
     resources :agents
     resources :renters
@@ -32,11 +33,13 @@ Rails.application.routes.draw do
     resources :renter_ratings
 
     resources :apartments
+    get '/apartments/enquiry/:id', to: 'apartments#enquiry'
     resources :apartment_pictures
     resources :enquiries
     resources :enquiry_agents, only: [:index, :show]
     resources :property_listings
     resources :appointments
+    put '/appointments/confirm/:id', to: 'appointments#confirm'
   end
 
   # get '/secret', to: 'statics#secret'

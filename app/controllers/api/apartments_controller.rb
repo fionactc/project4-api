@@ -11,6 +11,11 @@ class Api::ApartmentsController < ApplicationController
   def show
   end
 
+  def enquiry
+    @apartments = current_agent.apartments
+    @enquiries = Enquiry.where(renter_id: params[:id])
+  end
+
   def create
     @apartment = current_agent.apartments.new(apartment_params)
     if @apartment.save
@@ -53,6 +58,6 @@ private
 
   # refer to schema
   def apartment_params
-    params.require(:apartment).permit(:apt_name, :street, :area, :property_size_gross, :property_size_net, :price, :bedroom_num, :bathroom_num, :pet_friendly, :facilities, :building_type, :description, :agent_id)
+    params.require(:apartment).permit(:apt_name, :street, :area, :property_size_gross, :property_size_net, :price, :bedroom_num, :bathroom_num, :pet_friendly, :facilities, :description, :agent_id, :walkup, :open_kitchen)
   end
 end
