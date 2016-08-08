@@ -14,7 +14,16 @@ class Api::ChatsController < ApplicationController
 
   def userinfo
     @current_user = current_user
-    puts current_user.class
+    if (current_user.class==Renter)
+      @type = "Renter"
+    elsif (current_user.class==Agent)
+      @type = "Agent"
+    end
+
+    # @type = current_user.class
+    # puts '-----------------'
+    # puts current_user.class
+    # puts '-----------------'
     # render json: @type
   end
 
