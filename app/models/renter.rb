@@ -20,6 +20,7 @@ class Renter < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   validates :mobile_number, :presence => true, uniqueness: true
+  validates :password, confirmation: true
 
   # devise
   def self.find_for_database_authentication(warden_conditions)

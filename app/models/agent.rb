@@ -27,6 +27,7 @@ class Agent < ActiveRecord::Base
   validates_attachment_content_type :license_file, content_type: { content_type: ["image/jpeg", "application/pdf", "image/png"] }
 
   validates :mobile_number, :presence => true, uniqueness: true
+  validates :password, confirmation: true
 
   # devise
   def self.find_for_database_authentication(warden_conditions)
