@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808122739) do
+ActiveRecord::Schema.define(version: 20160809061234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(version: 20160808122739) do
     t.integer  "agent_id"
     t.integer  "renter_id"
     t.integer  "appointment_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "done",            default: false
   end
 
   create_table "agents", force: :cascade do |t|
@@ -126,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160808122739) do
     t.string   "renter_id"
     t.string   "agent_id"
     t.string   "location"
+    t.string   "message_id"
   end
 
   create_table "chats", force: :cascade do |t|
@@ -175,13 +177,13 @@ ActiveRecord::Schema.define(version: 20160808122739) do
     t.integer  "chat_id"
     t.integer  "agent_id"
     t.integer  "renter_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "imageable_id"
     t.string   "imageable_type"
     t.string   "message_type"
-    t.string   "appointment_id"
     t.string   "listing_title"
+    t.string   "appointment_status"
     t.index ["imageable_type", "imageable_id"], name: "index_messages_on_imageable_type_and_imageable_id", using: :btree
   end
 
@@ -205,8 +207,9 @@ ActiveRecord::Schema.define(version: 20160808122739) do
     t.integer  "agent_id"
     t.integer  "renter_id"
     t.integer  "appointment_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "done",            default: false
   end
 
   create_table "renters", force: :cascade do |t|

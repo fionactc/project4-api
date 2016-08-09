@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
 
   def authenticate_renter!
-    render json: {message: "Unauthorize"} if current_renter.nil?
+    render json: {message: "Unauthorize"}, status: 401 if current_renter.nil?
   end
 
   def get_current_renter
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_agent!
-    render json: {message: "Unauthorize"} if current_agent.nil?
+    render json: {message: "Unauthorize"}, status: 401 if current_agent.nil?
   end
 
   def get_current_agent
@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    render json: {message: "Unauthorize"} if current_user.nil?
+    render json: {message: "Unauthorize"}, status: 401 if current_user.nil?
   end
 
   def get_current_user

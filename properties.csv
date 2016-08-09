@@ -1,31 +1,31 @@
 area,apt_name,street,property_size_net,property_size_gross,price,description,agent_id
-Sai Ying Pun,Chung King Court,"83 First Street, Sai Ying Pun, Hong Kong Island",911,1477,"58,000",Minor Wear and Tear,1
-Wong Chuk Hang,"Marinella, Tower 1","9 Welfare Road, Wong Chuk Hang, Hong Kong Island",1949,2501,"110,000",Newly Renovated,1
-Quarry Bay,"Fu Tien Mansion, Taikoo Shing","Tai Koo Wan Road, Hong Kong Island",758,876,"34,000",Acceptable,1
-Ma Wan,"Park Island, Tower 1",Ma Wan,794,1027,"21,000",Need Renovation,1
-Happy Valley,Zenith Mansion,"7 Shan Kwong Road, Happy Valley, Hong Kong Island",1260,1400,"45,000",Acceptable,1
-Happy Valley,Cathy Garden,"48 Village Road, Happy Valley, Hong Kong Island",471,650,"19,500",Need Renovation,1
-Wong Chuk Hang,"Marinella, Tower 2","9 Welfare Road, Wong Chuk Hang, Hong Kong Island",938,1165,"53,000",Minor wear and Tear,1
-Tai Kok Tsui,"Central Park, Olympian City","18 Hoi Ting Road, Tai Kok Tsui, Kowloon",1004,1331,"45,000",Minor wear and Tear,1
-Tung Chung,Coastal Skyline,"12 Tung Chung Waterfront Road, Tung Chung, Lantau Island",2280,2312,"57,000",Newly Renovated,1
-Shouson Hill,Henredon Court,"8 Shouson Hill Road, Shouson Hill, Hong Kong Island",3341,4500,"158,000",Minor wear and Tear,1
-Tai Kok Tsui,Florient Rise,"38 Cherry Street, Tai Kok Tsui, Kowloon",774,1056,"35,000",Newly Renovated,1
-Yuen Long,On Lok Building,"1 Tai On Terrace, Yuen Long, New Territories",763,1100,"37,000",Newly Renovated,1
-Tai Kok Tsui,"Central Park, Olympian City","18 Hoi Ting Road, Tai Kok Tsui, Kowloon",473,645,"19,999",Acceptable,1
-West Kowloon,The Cullinan,"1 Austin Road West, West Kowloon",430,,"31,500",Minor wear and Tear,1
-Kennedy Town,Tung Fat Building,"1B New Praya, Kennedy Town, Hong Kong",1273,1571,"125,000",Newly Renovated,1
-Fortress Hill,"LeSommet, Tower 1","28 Fortress Hill Road, Fortress Hill, Hong Kong Island",790,1045,"43,000",Minor wear and Tear,1
-West Kowloon,Sorrento,"1 Austin Road West, West Kowloon",633,848,"27,000",Minor wear and Tear,1
-Mongkok,MacPherson Place,"38 Nelson Street, Mongkok, Kowloon",380,,"17,500",Minor wear and Tear,1
-Mongkok,8 Waterloo Road,"8 Waterloo Road, Mongkok, Kowloon",411,,"17,500",Minor wear and Tear,1
-North Point,Provident Centre,"21 Wharf Road, North Point, Hong Kong",1267,1431,"34,000",Acceptable,1
-Mongkok,Cheong Ming Building,"55 Sing Woo Road, Mongkok, Kowloon",350,500,"15,000",Acceptable,1
-Sai Ying Pun,Fung Sing Mansion,"133 Third Street, Sai Ying Pun, Hong Kong Island",210,,"11,800",Need Renovation,1
-Causeway Bay,Hoi Sun Building,"12 Mercury Street, Causeway Bay, Hong Kong Island",326,450,"18,000",Newly Renovated,1
-Causeway Bay,Chee On Building,"24 East Point Road, Causeway Bay, Hong Kong Island",465,,"19,800",Acceptable,1
-Causeway Bay,Paterson Building,"37 Paterson Street, Causeway Bay, Hong Kong Island",687,920,"30,000",Minor wear and Tear,1
-Causeway Bay,Elizabeth House,"254 Gloucester Road, Causeway Bay, Hong Kong Island",536,623,"21,000",Acceptable,1
-North Point,The Java,"98 Java Road, North Point, Hong Kong Island",560,777,"25,000",Minor wear and Tear,1
-Sai Ying Pun,Island Crest Tower 1,"8 First Street, Sai Ying Pun, Hong Kong",764,1036,"38,000",Newly Renovated,1
-Sai Ying Pun,Imperial Terrace,"356 Queen's Road West, Sai Ying Pun",617,925,"30,000",Minor wear and Tear,1
-Sai Ying Pun,New Start Building,"336 Queen's Road West, Sai Ying Pun, Hong Kong Island",312,457,"13,500",Acceptable,1
+Sai Ying Pun,Chung King Court,"83 First Street, Sai Ying Pun, Hong Kong Island",911,1477,"58,000",Minor Wear and Tear,7
+Wong Chuk Hang,"Marinella, Tower 1","9 Welfare Road, Wong Chuk Hang, Hong Kong Island",1949,2501,"110,000",Newly Renovated,7
+Quarry Bay,"Fu Tien Mansion, Taikoo Shing","Tai Koo Wan Road, Hong Kong Island",758,876,"34,000",Acceptable,7
+Ma Wan,"Park Island, Tower 1",Ma Wan,794,1027,"21,000",Need Renovation,7
+Happy Valley,Zenith Mansion,"7 Shan Kwong Road, Happy Valley, Hong Kong Island",1260,1400,"45,000",Acceptable,7
+Happy Valley,Cathy Garden,"48 Village Road, Happy Valley, Hong Kong Island",471,650,"19,500",Need Renovation,7
+Wong Chuk Hang,"Marinella, Tower 2","9 Welfare Road, Wong Chuk Hang, Hong Kong Island",938,1165,"53,000",Minor wear and Tear,7
+Tai Kok Tsui,"Central Park, Olympian City","18 Hoi Ting Road, Tai Kok Tsui, Kowloon",1004,1331,"45,000",Minor wear and Tear,7
+Tung Chung,Coastal Skyline,"12 Tung Chung Waterfront Road, Tung Chung, Lantau Island",2280,2312,"57,000",Newly Renovated,7
+Shouson Hill,Henredon Court,"8 Shouson Hill Road, Shouson Hill, Hong Kong Island",3341,4500,"158,000",Minor wear and Tear,7
+Tai Kok Tsui,Florient Rise,"38 Cherry Street, Tai Kok Tsui, Kowloon",774,1056,"35,000",Newly Renovated,7
+Yuen Long,On Lok Building,"1 Tai On Terrace, Yuen Long, New Territories",763,1100,"37,000",Newly Renovated,7
+Tai Kok Tsui,"Central Park, Olympian City","18 Hoi Ting Road, Tai Kok Tsui, Kowloon",473,645,"19,999",Acceptable,7
+West Kowloon,The Cullinan,"1 Austin Road West, West Kowloon",430,,"31,500",Minor wear and Tear,7
+Kennedy Town,Tung Fat Building,"1B New Praya, Kennedy Town, Hong Kong",1273,1571,"125,000",Newly Renovated,7
+Fortress Hill,"LeSommet, Tower 1","28 Fortress Hill Road, Fortress Hill, Hong Kong Island",790,1045,"43,000",Minor wear and Tear,7
+West Kowloon,Sorrento,"1 Austin Road West, West Kowloon",633,848,"27,000",Minor wear and Tear,7
+Mongkok,MacPherson Place,"38 Nelson Street, Mongkok, Kowloon",380,,"17,500",Minor wear and Tear,7
+Mongkok,8 Waterloo Road,"8 Waterloo Road, Mongkok, Kowloon",411,,"17,500",Minor wear and Tear,7
+North Point,Provident Centre,"21 Wharf Road, North Point, Hong Kong",1267,1431,"34,000",Acceptable,7
+Mongkok,Cheong Ming Building,"55 Sing Woo Road, Mongkok, Kowloon",350,500,"15,000",Acceptable,7
+Sai Ying Pun,Fung Sing Mansion,"133 Third Street, Sai Ying Pun, Hong Kong Island",210,,"11,800",Need Renovation,7
+Causeway Bay,Hoi Sun Building,"12 Mercury Street, Causeway Bay, Hong Kong Island",326,450,"18,000",Newly Renovated,7
+Causeway Bay,Chee On Building,"24 East Point Road, Causeway Bay, Hong Kong Island",465,,"19,800",Acceptable,7
+Causeway Bay,Paterson Building,"37 Paterson Street, Causeway Bay, Hong Kong Island",687,920,"30,000",Minor wear and Tear,7
+Causeway Bay,Elizabeth House,"254 Gloucester Road, Causeway Bay, Hong Kong Island",536,623,"21,000",Acceptable,7
+North Point,The Java,"98 Java Road, North Point, Hong Kong Island",560,777,"25,000",Minor wear and Tear,7
+Sai Ying Pun,Island Crest Tower 1,"8 First Street, Sai Ying Pun, Hong Kong",764,1036,"38,000",Newly Renovated,7
+Sai Ying Pun,Imperial Terrace,"356 Queen's Road West, Sai Ying Pun",617,925,"30,000",Minor wear and Tear,7
+Sai Ying Pun,New Start Building,"336 Queen's Road West, Sai Ying Pun, Hong Kong Island",312,457,"13,500",Acceptable,7
