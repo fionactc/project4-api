@@ -1,0 +1,1 @@
+json.partial! 'renter_rating_template', renter_rating: @renter_rating

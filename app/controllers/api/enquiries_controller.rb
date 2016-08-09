@@ -13,7 +13,6 @@ class Api::EnquiriesController < ApplicationController
   def create
 
     @enquiry = current_renter.enquiries.new(enquiry_params)
-    @enquiry.update_attributes(areas: params[:areas])
     if @enquiry.save
       areas = @enquiry.areas
       areas.each do |area|
@@ -53,6 +52,6 @@ private
 
   # refer to schema
   def enquiry_params
-    params.require(:enquiry).permit(:areas, :bedroom_num, :bathroom_num, :property_size_min, :property_size_max, :price_min, :price_max, :archived, :renter_id, :region, :remarks, :urgent, :movein_date, :available_days, :timeslot, :walkup, :open_kitchen, :pet_friendly)
+    params.require(:enquiry).permit( :bedroom_num, :bathroom_num, :property_size_min, :property_size_max, :price_min, :price_max, :archived, :renter_id, :region, :remarks, :urgent, :movein_date, :walkup, :open_kitchen, :pet_friendly, :areas => [], :available_days => [],:timeslot => [] )
   end
 end
