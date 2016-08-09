@@ -44,8 +44,15 @@ class Api::AppointmentsController < ApplicationController
     if @appointment.save
 
       # create renter_ratings, agent_ratings
-      current_renter.renter_ratings.create(agent_id: @appointment.agent_id, appointment_id: @appointment)
-      AgentRating.create(agent_id: @appointment.agent_id, renter_id: current_renter.id, appointment_id: @appointment)
+      # @renterRating = current_renter.renter_ratings.create(agent_id: @appointment.agent_id, appointment_id: @appointment)
+      rRating = RenterRating.create(agent_id: @appointment.agent_id, renter_id: current_renter.id, appointment_id: @appointment.id)
+      aRating = AgentRating.create(agent_id: @appointment.agent_id, renter_id: current_renter.id, appointment_id: @appointment.id)
+      if aRating.save
+        puts 'aRating is saved'
+      else
+        puts 'ERORROORORORORORO'
+        puts aRating.errors.messages, status: 400
+      end
 
       # create message
       @message.update_attributes(appointment_status: 'confirmed')
