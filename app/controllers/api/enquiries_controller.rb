@@ -3,7 +3,7 @@ class Api::EnquiriesController < ApplicationController
   before_action :set_enquiry, only:  [:show, :update]
 
   def index
-    @enquiries = Enquiry.all
+    @enquiries = current_renter.enquiries
   end
 
   def show
