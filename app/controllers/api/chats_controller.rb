@@ -2,10 +2,7 @@ class Api::ChatsController < ApplicationController
   before_action :authenticate_agent!, only: [:findChat]
 
   def index
-    # @chats = Chat.all
-    # @chats
     @chats = current_user.chats.includes(:messages, :renter, :agent)
-    # render json: @chats
   end
 
   def new
@@ -19,12 +16,6 @@ class Api::ChatsController < ApplicationController
     elsif (current_user.class==Agent)
       @type = "Agent"
     end
-
-    # @type = current_user.class
-    # puts '-----------------'
-    # puts current_user.class
-    # puts '-----------------'
-    # render json: @type
   end
 
   def create
@@ -38,14 +29,11 @@ class Api::ChatsController < ApplicationController
       redirect_to api_chats_path
     else
       render json: {errors: @chat.errors.messages}
-      # puts 'errorrrrrrrrrrr'
-      # render 'new'
     end
   end
 
   def show
     @chatroom = Chat.includes(:messages).find(params[:id])
-    # @message = Message.new
   end
 
   # receive a renter id, return/create a chatroom between renter and current_agent

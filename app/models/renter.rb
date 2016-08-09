@@ -11,7 +11,8 @@ class Renter < ActiveRecord::Base
   has_many :messages, as: :imageable
   has_many :chats
   has_many :property_listings
-  has_one  :appointment
+  # has_one  :appointment
+  has_many :appointments
 
   has_attached_file :avatar, styles: {
     medium: "300x300>",

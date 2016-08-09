@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :enquiries
     resources :enquiry_agents, only: [:index, :show]
     resources :property_listings
+    get '/getlistings/:messageId', to: 'property_listings#getlistings'
     resources :appointments
     put '/appointments/confirm/:id', to: 'appointments#confirm'
   end

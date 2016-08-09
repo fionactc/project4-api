@@ -1,0 +1,1 @@
+json.partial! 'agent_rating_template', agent_rating: @agent_rating

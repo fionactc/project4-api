@@ -22,23 +22,21 @@ class Api::PropertyListingsController < ApplicationController
 
   def create
     @propertyListings = [];
-
-    @message = current_agent.messages.create(listing_title: params[:title], chat_id: params[:chat_id], message_type: 'listing')
-    puts '--------look at message------'
-    puts @message.id
-    puts '--------look at message------'
-    puts '--------look at message------'
-    puts '--------look at message------'
-    params[:apartments].each do |id|
-      newlisting = PropertyListing.create(apartment_id: id, renter_id: params[:renter_id], agent_id: current_agent.id, message_id: @message.id)
-      puts newlisting
-      @propertyListings.push(newlisting);
+    @message = current_agent.messages.create(listing_title: params[:title], chat_id: params[:chat_id], message_type: 'listing', body: 'I have sent ' + params[:apartments].count.to_s + ' new listing(s) to you.')
+    if @message.save
+      params[:apartments].each do |id|
+        newlisting = PropertyListing.create(apartment_id: id, renter_id: params[:renter_id], agent_id: current_agent.id, message_id: @message.id)
+        @propertyListings.push(newlisting);
+      end
+    else
+      render json: @message.errors.messages
     end
-    @message.update_attributes(body: 'I have sent ' + @propertyListings.count.to_s + ' new listing(s) to you.')
-    @propertyListings
   end
 
-  # @message = current_agent.messages.create(chat_id: params[:chat_id], body: 'I have sent ' + @propertyListings.count.to_s + ' new listing(s) to you.', message_type: 'listing')
+  def getlistings
+    @listings = PropertyListing.includes(:apartment).where(message_id: params[:messageId])
+    # render json: @listings
+  end
 
   def update
     @property_listing.assign_attributes(property_listing_params)
@@ -64,7 +62,7 @@ private
 
   # refer to schema
   def property_listing_params
-    params.permit(:apartments, :renter_id, :title)
+    params.permit(:apartments, :renter_id, :title, :chat_id)
 
   end
 
