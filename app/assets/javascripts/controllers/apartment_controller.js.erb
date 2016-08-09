@@ -20,12 +20,12 @@ Agent.controller('NewRateCtrl', ['$scope', '$http', 'Upload', function($scope, $
       url: url + "apartments",
       method: "POST",
       data: data
+    }).progress( function(evt){
+      data.progress = Math.round(evt.loaded * 100 / evt.total)
     }).then(function(resp){
       console.log(resp);
     }, function(resp){
       console.log(resp);
-    }, function(evt){
-      console.log(Math.min(100, parseInt(100.0 * evt.loaded / evt.total)))
     });
   };
 
