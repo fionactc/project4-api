@@ -53,6 +53,6 @@ private
 
   # refer to schema
   def enquiry_params
-    params.require(:enquiry).permit(:areas, :bedroom_num, :bathroom_num, :property_size_min, :property_size_max, :price_min, :price_max, :archived, :renter_id, :region, :remarks, :urgent, :movein_date, :available_days, :timeslot, :walkup, :open_kitchen, :pet_friendly)
+    params.permit(:areas, :bedroom_num, :bathroom_num, :property_size_min, :property_size_max, :price_min, :price_max, :archived, :renter_id, :region, :remarks, :urgent, :movein_date, :available_days, :timeslot, :walkup, :open_kitchen, :pet_friendly)
   end
 end

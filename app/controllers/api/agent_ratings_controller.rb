@@ -14,13 +14,6 @@ class Api::AgentRatingsController < ApplicationController
     @agent_rating = AgentRating.new(agent_rating_params)
     # @agent_rating = current_renter.agent_ratings.new(agent_rating_params)
     if @agent_rating.save
-      if @agent.agent_avg_ratings.nil?
-        @agent.update_attributes(agent_avg_ratings: @agent_rating.ar_overall_star)
-      end
-      arr = [@agent_rating.ar_overall_star, @agent.agent_avg_ratings]
-      avg = arr.inject{ |sum, el| sum + el }.to_f / arr.size
-      @agent.update_attributes(agent_avg_ratings: avg)
-
       render 'show'
     else
       render json: @agent_rating.errors.messages, status: 400
@@ -29,7 +22,18 @@ class Api::AgentRatingsController < ApplicationController
 
   def update
     @agent_rating.assign_attributes(agent_rating_params)
+    @agent = Agent.find_by_id(@agent_rating.agent_id)
+
     if @agent_rating.save
+      # if nil set a value, if not average the values
+      if @agent.agent_avg_ratings.nil?
+        @agent.update_attributes(agent_avg_ratings: @agent_rating.ar_overall_star)
+      else
+        arr = [@agent_rating.ar_overall_star, @agent.agent_avg_ratings]
+        avg = arr.inject{ |sum, el| sum + el }.to_f / arr.size
+        @agent.update_attributes(agent_avg_ratings: avg)
+      end
+
       render 'show'
     else
       render json: {errors: @agent_rating.errors.messages}, status: 400
