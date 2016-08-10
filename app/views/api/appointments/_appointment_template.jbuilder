@@ -1,2 +1,1 @@
 json.merge! appointment.attributes
-
