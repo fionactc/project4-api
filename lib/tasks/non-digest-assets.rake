@@ -12,7 +12,7 @@ namespace :assets do
     return if File.directory?(file)
 
     # set the final path for our rendered erb file
-    destination_path = File.join(destination_folder, "cable.js")
+    destination_path = File.join(destination_folder, "cable-abc.js")
     # read the file and using erb and save it to destination_path
     File.open(destination_path, "w+") do |f|
       f.write(ERB.new(File.read(file)).result())
@@ -20,5 +20,7 @@ namespace :assets do
 
     # copy the the rendered erb file with an .gz extension
     FileUtils.cp(destination_path, destination_path + '.gz')
+
+    puts Dir.glob(File.join(Rails.root, 'public/assets/*'))
   end
 end
