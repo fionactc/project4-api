@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get '/getlistings/:messageId', to: 'property_listings#getlistings'
     resources :appointments
     put '/appointments/confirm/:id', to: 'appointments#confirm'
+
   end
 
   # get '/secret', to: 'statics#secret'

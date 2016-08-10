@@ -1,6 +1,6 @@
 class Api::RenterRatingsController < ApplicationController
   before_action :authenticate_agent!, except: [:index, :show]
-  before_action :set_renter_ratings, only:  [:show, :update]
+  before_action :set_renter_rating, only:  [:show, :update]
 
   def index
     @renter_ratings = RenterRating.includes(:appointment, :renter, :agent).all
@@ -21,6 +21,7 @@ class Api::RenterRatingsController < ApplicationController
   def update
     @renter_rating.assign_attributes(renter_rating_params)
     @renter_rating.update_attributes(done: true)
+    @renter = Renter.find_by_id(@renter_rating.renter.id)
 
     if @renter_rating.save
       # if nil set a value, if not average the values
@@ -41,7 +42,7 @@ class Api::RenterRatingsController < ApplicationController
 private
 
   def set_renter_rating
-    @renter_rating = RenterRating.includes(:appointment, :renter, :agent).find_by_id(params[:id])
+    @renter_rating = RenterRating.find_by_id(params[:id])
     if @renter_rating.nil?
       render json: {message: "Cannot find renter_rating with ID #{params[:id]}"}
     end

@@ -22,7 +22,6 @@ class Api::AgentRatingsController < ApplicationController
   def update
     @agent_rating.assign_attributes(agent_rating_params)
     @agent_rating.update_attributes(done: true)
-
     @agent = Agent.find_by_id(@agent_rating.agent_id)
 
     if @agent_rating.save
@@ -44,7 +43,7 @@ class Api::AgentRatingsController < ApplicationController
 private
 
   def set_agent_rating
-    @agent_rating = AgentRating.includes(:appointment, :renter, :agent).find_by_id(params[:id])
+    @agent_rating = AgentRating.find_by_id(params[:id])
     if @agent_rating.nil?
       render json: {message: "Cannot find agent_rating with ID #{params[:id]}"}
     end

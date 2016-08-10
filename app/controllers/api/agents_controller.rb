@@ -44,7 +44,7 @@ private
 
   # refer to schema
   def agent_params
-    params.permit(:email, :name, :first_name, :family_name, :mobile_number, :agent_avg_ratings, :area, :nickname, :description, :website, :avatar, :license_num, :company_website, :license_file, :company_logo, :company_license_num, :branch_address, :branch_phone, :branch_fax, :salutation)
+    params.permit(:email, :name, :first_name, :family_name, :mobile_number, :agent_avg_ratings, :nickname, :description, :website, :avatar, :license_num, :company_website, :license_file, :company_logo, :company_license_num, :branch_address, :branch_phone, :branch_fax, :salutation, :areas => [])
   end
 
 end
