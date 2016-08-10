@@ -62,5 +62,5 @@ Rails.application.configure do
     }
   }
 
-  # config.action_cable.allowed_request_origins = ['http://localhost:8100']
+  config.action_cable.allowed_request_origins = ['http://localhost:8100']
 end
