@@ -20,10 +20,11 @@ class Api::RenterRatingsController < ApplicationController
 
   def update
     @renter_rating.assign_attributes(renter_rating_params)
-    @renter_rating.update_attributes(done: true)
     @renter = Renter.find_by_id(@renter_rating.renter.id)
 
     if @renter_rating.save
+      @renter_rating.update_attributes(done: true)
+
       # if nil set a value, if not average the values
       if @renter.renter_avg_ratings.nil?
         @renter.update_attributes(renter_avg_ratings: @renter_rating.rr_overall_star)

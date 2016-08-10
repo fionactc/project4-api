@@ -21,10 +21,11 @@ class Api::AgentRatingsController < ApplicationController
 
   def update
     @agent_rating.assign_attributes(agent_rating_params)
-    @agent_rating.update_attributes(done: true)
     @agent = Agent.find_by_id(@agent_rating.agent_id)
 
     if @agent_rating.save
+      @agent_rating.update_attributes(done: true)
+
       # if nil set a value, if not average the values
       if @agent.agent_avg_ratings.nil?
         @agent.update_attributes(agent_avg_ratings: @agent_rating.ar_overall_star)
