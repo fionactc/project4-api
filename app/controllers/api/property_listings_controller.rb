@@ -22,6 +22,7 @@ class Api::PropertyListingsController < ApplicationController
 
   def create
     @propertyListings = [];
+
     @message = current_agent.messages.create(listing_title: params[:title], chat_id: params[:chat_id], message_type: 'listing', body: 'I have sent ' + params[:apartments].count.to_s + ' new listing(s) to you.')
     if @message.save
       params[:apartments].each do |id|
@@ -62,7 +63,7 @@ private
 
   # refer to schema
   def property_listing_params
-    params.permit(:apartments, :renter_id, :title, :chat_id)
+    params.permit(:apartments, :renter_id, :title, :chat_id, :uid, :type)
 
   end
 

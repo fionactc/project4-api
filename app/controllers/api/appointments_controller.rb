@@ -21,6 +21,11 @@ class Api::AppointmentsController < ApplicationController
   end
 
   def create
+    # if (params[:type] == 'agent')
+    #   @user = Agent.where(uid: params[:uid])
+    # elsif (params[:type] == 'renter')
+    #   @user = Renter.where(uid: params[:uid])
+    # end
     @message = current_agent.messages.create(
       chat_id: params[:chat_id],
       body: 'Viewing in ' + params[:location] + ' with ' + current_agent.id.to_s + ' on ' + params[:start_time],
@@ -103,7 +108,7 @@ private
 
   # refer to schema
   def appointment_params
-    params.permit(:start_time, :end_time, :renter_id, :location, :chat_id)
+    params.permit(:start_time, :end_time, :renter_id, :location, :chat_id, :uid, :type)
   end
 
 end

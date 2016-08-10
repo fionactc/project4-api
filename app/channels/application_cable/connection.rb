@@ -1,9 +1,9 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    identified_by :current_user
+    # identified_by :current_user
 
     def connect
-      self.current_user = find_verified_user
+      # self.current_user = find_verified_user
       # logger.add_tags 'ActionCable', current_user.id
       # self.current_user = find_verified_user
       # console.log(self.current_user);
