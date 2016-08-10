@@ -12,9 +12,21 @@ class Api::AgentsController < ApplicationController
   def create
     @agent = current_agent.new(agent_params)
     if @agent.save
+
+      # match agents to past enquiries
       render 'show'
     else
       render json: @agent.errors.messages, status: 400
+    end
+  end
+
+  def match
+    areas = @agent.areas
+    areas.each do |area|
+      matched_enquiries = Enquiry.where("'#{area}' = ANY (areas)")
+      matched_enquiries.each do |enquiry|
+        EnquiryAgent.create(agent_id: @agent.id, enquiry_id: enquiry.id)
+      end
     end
   end
 
