@@ -19,5 +19,3 @@
 .DS_Store
 public/assets
 bower_components
-
-.env
