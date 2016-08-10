@@ -11,7 +11,6 @@ class Api::EnquiriesController < ApplicationController
 
   # save enquiry, match agents with enquiry and create new enquiry_agent
   def create
-
     @enquiry = current_renter.enquiries.new(enquiry_params)
     if @enquiry.save
       areas = @enquiry.areas
@@ -52,6 +51,8 @@ private
 
   # refer to schema
   def enquiry_params
-    params.require(:enquiry).permit( :bedroom_num, :bathroom_num, :property_size_min, :property_size_max, :price_min, :price_max, :archived, :renter_id, :region, :remarks, :urgent, :movein_date, :walkup, :open_kitchen, :pet_friendly, :areas => [], :available_days => [],:timeslot => [] )
+
+   params.require(:enquiry).permit( :bedroom_num, :bathroom_num, :property_size_min, :property_size_max, :price_min, :price_max, :archived, :renter_id, :region, :remarks, :urgent, :movein_date, :walkup, :open_kitchen, :pet_friendly, :areas => [], :available_days => [],:timeslot => [] )
+    # params.require(:enquiry).permit(:areas, :bedroom_num, :bathroom_num, :property_size_min, :property_size_max, :price_min, :price_max, :archived, :renter_id, :region, :remarks, :urgent, :movein_date, :available_days, :timeslot, :walkup, :open_kitchen, :pet_friendly)
   end
 end

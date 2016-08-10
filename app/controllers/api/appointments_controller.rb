@@ -82,7 +82,7 @@ class Api::AppointmentsController < ApplicationController
 
     @destroy_message = current_user.messages.create(
       chat_id: @message.chat_id,
-      body: 'I have cancelled our appointment on ' + appointment.start_time + ', ' + appointment.start_date + '.' ,
+      body: 'I have cancelled our appointment on ' + appointment.start_time + '.' ,
       message_type: 'text')
     if @destroy_message.save
       render json: @destroy_message
