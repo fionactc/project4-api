@@ -15,9 +15,16 @@ class ChatRoomsChannel < ApplicationCable::Channel
     puts '--------------------------------'
     puts '--------------------------------'
     puts '--------------------------------'
-    puts current_user
-    message = current_user.messages.create(body: data['message'], chat_id: data['chat_room_id'], message_type: 'text')
+    message = get_current_user(data).messages.create(body: data['message'], chat_id: data['chat_room_id'], message_type: 'text')
     puts message
+  end
+
+  def get_current_user(data)
+    if verified_user = Renter.find_by(uid: data["uid"])
+      verified_user
+    elsif verified_user = Agent.find_by(uid: data["uid"])
+      verified_user
+    end
   end
 
   def send_listing(data)

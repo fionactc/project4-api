@@ -98,6 +98,7 @@ Rails.application.configure do
   # config.web_socket_server_url = "wss://simplyhome-dev-rails.herokuapp.com/cable"
 
   # # allow web socket requests from origin
-  # config.action_cable.allowed_request_origins = ['https://simplyhome-dev-ionic.herokuapp.com', 'http://simplyhome-dev-ionic.herokuapp.com']
+  config.action_cable.allowed_request_origins = ['http://localhost:8100']
 
+  config.action_cable.disable_request_forgery_protection = true
 end
