@@ -1,2 +1,2 @@
 json.merge! apartment_picture.attributes
-json.url  apartment_picture.picture.url
+json.url  apartment_picture.picture.url(:medium)

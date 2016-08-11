@@ -33,6 +33,15 @@ class Api::ApartmentsController < ApplicationController
   def update
     @apartment.assign_attributes(apartment_params)
     if @apartment.save
+      if @pictures
+        @pictures.each do |key, value|
+          if ApartmentPicture.id === @pictures.id
+            ApartmentPicture.update(picture: value)
+          else
+            ApartmentPicture.create(picture: value, apartment_id: @apartment.id)
+          end
+        end
+      end
       render 'show'
     else
       render json: {errors: @apartment.errors.messages}, status: 400
