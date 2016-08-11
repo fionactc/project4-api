@@ -21,14 +21,13 @@ class Api::AppointmentsController < ApplicationController
   end
 
   def create
-    # if (params[:type] == 'agent')
-    #   @user = Agent.where(uid: params[:uid])
-    # elsif (params[:type] == 'renter')
-    #   @user = Renter.where(uid: params[:uid])
-    # end
+    time = DateTime.parse(params[:start_time])
+    time = time.strftime("%A %d %b, %H:%M%p")
+    # formatted_date = date.strftime('%a %b %d %H:%M:%S %Z %Y')
+    # time = params[:start_time].to_formatted_s(:short)
     @message = current_agent.messages.create(
       chat_id: params[:chat_id],
-      body: 'Viewing in ' + params[:location] + ' with ' + current_agent.id.to_s + ' on ' + params[:start_time],
+      body: 'Viewing in ' + params[:location] + ' with ' + current_agent.first_name + ' ' + current_agent.family_name + ' on ' + time.to_s,
       message_type: 'appointment',
       appointment_status: 'unconfirmed')
       @appointment = Appointment.new(start_time: params[:start_time], end_time: params[:end_time], renter_id: params[:renter_id], location: params[:location], message_id: @message.id)
@@ -61,9 +60,11 @@ class Api::AppointmentsController < ApplicationController
 
       # create message
       @message.update_attributes(appointment_status: 'confirmed')
+      time = DateTime.parse(@appointment.start_time)
+      time = time.strftime("%A %d %b, %H:%M%p")
       @confirm_message = current_renter.messages.create(
         chat_id: @message.chat_id,
-        body: 'I have confirmed our appointment on ' + @appointment.start_time + '.' ,
+        body: 'I have confirmed our appointment on ' + time.to_s + '.' ,
         message_type: 'text')
       render json: @appointment
     else
@@ -85,9 +86,13 @@ class Api::AppointmentsController < ApplicationController
     appointment = @message.appointment.destroy
     @message.update_attributes(appointment_status: 'cancelled')
 
+    # format start time
+    time = DateTime.parse(appointment.start_time)
+    time = time.strftime("%A %d %b, %H:%M%p")
+
     @destroy_message = current_user.messages.create(
       chat_id: @message.chat_id,
-      body: 'I have cancelled our appointment on ' + appointment.start_time + '.' ,
+      body: 'I have cancelled our appointment on ' + time.to_s + '.' ,
       message_type: 'text')
     if @destroy_message.save
       render json: @destroy_message
